@@ -14,6 +14,7 @@ GEM
     ffi (1.9.3)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    headless (1.0.1)
     minitest (4.7.5)
     multi_json (1.9.2)
     multi_test (0.1.1)
@@ -34,6 +35,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   cucumber
+  headless
   minitest
   rake
   watir-webdriver

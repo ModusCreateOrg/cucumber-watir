@@ -8,22 +8,22 @@ Then(/^I must see the page title "(.*?)"$/) do |title|
 end
 
 ###### Links
-Given(/^I click the "(.*?)" link$/) do |link_attr|
+Given(/^I click the "(.*?)" link$/) do |ele|
   case
-  when @browser.link(:id, link_attr).exists?
-       @browser.link(:id, link_attr).click
+  when @browser.link(:id, ele).exists?
+       @browser.link(:id, ele).click
 
-  when @browser.link(:text, link_attr).exists?
-       @browser.link(:text, link_attr).click
+  when @browser.link(:text, ele).exists?
+       @browser.link(:text, ele).click
 
-  when @browser.link(:class, link_attr).exists?
-       @browser.link(:class, link_attr).click
+  when @browser.link(:class, ele).exists?
+       @browser.link(:class, ele).click
 
-  when @browser.link(:href, link_attr).exists?
-       @browser.link(:href, link_attr).click
+  when @browser.link(:href, ele).exists?
+       @browser.link(:href, ele).click
 
   else
-    fail("Link => #{link_attr} NOT FOUND")
+    fail("Link => #{ele} NOT FOUND")
   end
 end
 
@@ -44,6 +44,23 @@ Given(/^I click the "(.*?)" span$/) do |ele|
   end
 end
 
+###### Icon
+Given(/^I click the "(.*?)" icon$/) do |ele|
+  case
+  when @browser.i(:id, ele).exists?
+       @browser.i(:id, ele).click
+
+  when @browser.i(:text, ele).exists?
+       @browser.i(:text, ele).click
+
+  when @browser.i(:class, ele).exists?
+       @browser.i(:class, ele).click
+
+  else
+    fail("Icon => #{ele} NOT FOUND")
+  end
+end
+
 Given(/^I wait for the menu to b displayed$/) do
-  @browser.ul(:class => "menuNavUl").wait_until_present
+  @browser.ul(:class => "off-canvas-list").wait_until_present
 end
