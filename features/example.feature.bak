@@ -1,0 +1,407 @@
+Feature: Regression tests for example.com
+
+@regression @desktop @login
+Scenario: User inputs invalid user name at login
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "test@example.com"
+      And I fill in the text field "login_password" with "blablah"
+      And I click the "Login" span
+      And I wait for the "Your user name and/or password are incorrect. Please try again." text to be displayed
+
+@regression @desktop @login
+Scenario: User inputs invalid password at login
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "blablah@example.com"
+      And I fill in the text field "login_password" with "test"
+      And I click the "Login" span
+      And I wait for the "Your user name and/or password are incorrect. Please try again." text to be displayed
+
+@regression @desktop @login
+Scenario: User logs in and logs out successfully
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+      Given I click the "Logout" button
+      And I wait for the "An Intraprenuers' tool for Lean-a-fying the Enterprise" text to be displayed
+      Then I must see the text "An Intraprenuers' tool for Lean-a-fying the Enterprise" displayed
+
+@regression @desktop @register
+Scenario: Verify that the Registration Email & Password field is a required Field
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      And I must see the "register_email" text field has a class attribute of "ng-invalid-required"
+      And I must see the "register_pass" text field has a class attribute of "ng-invalid-required"
+      And I must see the "login_email" text field has a class attribute of "ng-invalid-required"
+      And I must see the "login_password" text field has a class attribute of "ng-invalid-required"
+
+@regression @desktop @login
+Scenario: User views profile page
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+      Given I click the "anne@example.com" link
+      And I wait for the "Profile" text to be displayed
+
+@regression @desktop @login @LinkedIn
+Scenario: User links LinkedIn account to profile via profile page
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Given I click the "anne@example.com" link
+	  And I wait for the "Profile" text to be displayed
+	  Given I click the "Link LinkedIn Acct" button
+      And login with linkedin credentials
+
+
+@regression @desktop @resetpass
+Scenario: User resets password
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+	  And I wait for the "productizer" text to be displayed
+	  Given I click the "Forgot Password" button
+	  And I wait for the form name "resetPasswordForm"
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "blablah@example.com" keys
+      And I click the "Reset Password" button
+      Then I must see the text "Reset email sent to blablah@example.com" displayed
+
+@regression @desktop @registration
+Scenario: User registers
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "registration_email" with "test2@example.com"
+      And I fill in the text field "registration_password" with "foobar1234"
+      And I click the "Register" span
+	  And I wait for the "Dashboard" text to be displayed
+      Then I must see the text "All Widgets" displayed
+      Given I click the "New Widget" button
+      And I wait for the "New Widget Initial Setup" text to be displayed
+
+@wip @regression @desktop @registration
+Scenario: User enters registration email already in use
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "registration_email" with "test2@example.com"
+      And I fill in the text field "registration_password" with "foobar1234"
+      And I click the "Register" span
+	  And I wait for the "???" text to be displayed
+
+@regression @desktop
+Scenario: User can successfully create a kickstart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+      Given I click the "New Widget" button
+      And I wait for the "New Widget Initial Setup" text to be displayed
+      Given I fill in the text field "kickstartName" with "Test Widget"
+      And I fill in the text field "short_description" with "test short description"
+      And I send the "tab" keys
+      And I send the "06/01/2014" keys
+      And I send the "tab" keys
+      And I send the "06/06/2014" keys
+      And I click the "Save & Continue" span
+	  And I wait for the "Identify The Target App" text to be displayed
+	  Given I fill in the text field "business_owner" with "business owner 1"
+	  And I fill in the text field "product_owner" with "product owner 1"
+	  And I fill in the text field "primary_users" with "primary users 1"
+	  And I fill in the text field "secondary_users" with "secondary users 1"
+	  And I click the "Save & Continue" span
+	  And I wait for the "Create A Schedule" text to be displayed
+	  And I click the "Continue" button
+	  And I wait for the "Test Widget" text to be displayed
+
+@regression @desktop
+Scenario: User can successfully view a kickstart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Then I must see the text "Supporting Tech" displayed
+
+@regression @desktop
+Scenario: User can add a link to an existing kickstart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Links" button
+	  And I wait for the "Add links to external" text to be displayed
+	  And I send the "tab" keys
+	  And I send the "Test Link 1" keys
+	  And I send the "tab" keys
+	  And I send the "https://testlink.com" keys
+	  Given I click the "Add New Link" button
+	  Then I must see the text "Name" displayed
+	  Then I must see the text "URL" displayed
+	  Given I click the "Links" button
+	  Then I should not see the text "URL" displayed
+
+@wip @regression @desktop
+Scenario: User can add a document from Dropbox to an existing kickstart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Files" button
+	  Given I click the "Add Files From Dropbox" button
+
+@wip @regression @desktop
+Scenario: User can add a document from Google drive to an existing kickstart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Files" button
+	  Given I click the "Add From Drives" button
+
+@regression @desktop
+Scenario: User can invite a collaborator to their Widget
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Collaborators" button
+	  And I wait for the "KICKSTART COLLABORATORS" text to be displayed
+	  And I send the "tab" keys
+	  And I send the "collaborator@test.com" keys
+	  And I send the "tab" keys
+	  And I click the "Invite" button
+	  And I wait for the "INVITE COLLABORATORS" text to be displayed
+	  Then I must see the text "collaborator@test.com" displayed
+	  Then I must see the text "Pending" displayed
+
+@regression @desktop
+Scenario: User can edit a kickstart name and description
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Settings" button
+	  And I wait for the "Edit Dates" text to be displayed
+	  Given I click the "Edit Name / Description" button
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "new kickstarter name" keys
+      And I send the "tab" keys
+	  And I send the "new description" keys
+	  And I send the "tab" keys
+	  And I click the "Save" button
+	  And I wait for the "Day #1" text to be displayed
+	  Then I must see the text "new kickstarter name" displayed
+
+@regression @desktop
+Scenario: User can edit a kickstart date and schedule
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Settings" button
+	  And I wait for the "Edit Dates" text to be displayed
+	  Given I click the "Edit Dates / Schedule" button
+	  And I wait for the "Create A Schedule" text to be displayed
+	  Then I click the "Continue" button
+	  And I wait for the "Day #1" text to be displayed
+	  Then I must see the text "Supporting Tech" displayed
+
+@wip @regression @desktop
+Scenario: User can complete Supporting Tech info for existing KickStart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Supporting Tech" topics
+
+@wip @regression @desktop
+Scenario: User can complete Business Architecture info for existing KickStart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Business Architecture" button
+
+@regression @desktop
+Scenario: User can view the Files and Links attached to an existing KickStart
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I click the "See_All_Files" button
+
+@wip @regression @desktop
+Scenario: User can cursor through the days in the schedule and see the correct topics
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Then I must see the text "Supporting Tech" displayed
+	  Given I click the "Day #2 - Tuesday" h4
+
+@wip @regression @desktop
+Scenario: User can sort Widgets on main page by Progress
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "tab" keys
+	  And I send the "down arrow" keys
+	  #Given I click the "sort_button" button
+	  And I send the "enter" keys
+
+@wip @regression @desktop
+Scenario: User can sort Widgets on main page by Start Date
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "sort_button" button
+	  And I click the "Start Date" button
+
+@wip @regression @desktop
+Scenario: User can sort Widgets on main page by End Date
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "sort_button" button
+	  And I click the "End Date" button
+
+@wip @regression @desktop
+Scenario: User can delete a Widget via Settings
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Given I click the "Settings" button
+	  And I wait for the "Edit Dates" text to be displayed
+	  Given I click the "Delete Widget" button
+
+@wip @regression @desktop @login
+Scenario: User sends a message to ask for help via User Voice
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+	  Given I click the "Help" icon
+	  And I send the "I need some help with my kickstarter." keys
+	  Then I click the "Next" button
+	  And I wait for the "Additional details" text to be displayed
+	  And I send the "test@test.com" keys
+	  Then I click the "Send message" button
+	  And I wait for the "Message Sent" text to be displayed
+
+@regression @desktop
+Scenario: Clicking home takes user to home page from Widget view page
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "View Details" button
+	  And I wait for the "Day #1" text to be displayed
+	  Then I must see the text "Supporting Tech" displayed
+	  And I send the "tab" keys
+	  Then I click the "pre-alpha" span
+	  And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Dashboard" displayed
+
+@regression @desktop
+Scenario: User can successfully delete a kickstart from the dashboard
+      Given I am on the desktop home page
+      Then I must see the page title "example.com"
+      Given I fill in the text field "login_email" with "anne@example.com"
+      And I fill in the text field "login_password" with "foobar1234"
+      And I click the "Login" span
+      And I wait for the "Dashboard" text to be displayed
+	  Then I must see the text "Test Widget" displayed
+	  Given I click the "Delete" link
+	  And I wait for the "Are you sure?" text to be displayed
+	  Given I click the "Yes, Remove" button

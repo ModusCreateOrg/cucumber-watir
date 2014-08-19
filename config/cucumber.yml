@@ -1,0 +1,1 @@
+default: features -t ~@wip -t ~@manual
