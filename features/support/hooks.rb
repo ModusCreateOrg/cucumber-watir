@@ -1,3 +1,5 @@
+# For more information on writing hooks please read the cuke wiki
+# https://github.com/cucumber/cucumber/wiki/Hooks
 
 RESULTS_DIR="results"
 TIMEOUT=180

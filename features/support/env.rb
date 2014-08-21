@@ -33,5 +33,4 @@ module Watir
     end
 end
 
-
 World(MiniTest::Assertions)

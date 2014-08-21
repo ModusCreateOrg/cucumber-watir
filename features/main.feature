@@ -1,19 +1,22 @@
-Feature: Main automated functional tests
+Feature: Main tests
 
-#@smoke @regression @desktop
-#Scenario: User views profile page
-#      Given I am on the desktop home page
-#      Then I must see the page title "example.com"
-#      Given I fill in the text field "login_email" with "foobar@example.com"
-#      And I fill in the text field "login_password" with "password"
-#      And I click the "Login" span
-#      And I wait for the "Dashboard" text to be displayed
-#      Given I click the "foobar@example.com" link
-#      And I wait for the "Profile" text to be displayed
-#      And I send the "tab" keys
-#      And I send the "06/01/2014" keys
-#      And I send the "tab" keys
-#      And I send the "06/06/2014" keys
-#      And I click the "Save & Continue" span
-#      And I fill in the text field "short_description" with "Modus Kickstart short description"
-#      Then I must see the text "Thank You" displayed
+@smoke @regression @desktop
+Scenario: Visit the home page
+  Given I am on the moduscreate home page
+  Then I must see the page title "Modus Create | HTML5 Application Development & Training"
+  Given I click the "Services" span
+  Then I must see the page title "Services | Modus Create"
+
+@regression @mobile
+Scenario: Visit the home page on a mobile device
+    Given I am on the moduscreate home page
+    Then I must see the page title "Modus Create | HTML5 Application Development & Training"
+    Given I click the "icon-reorder" icon
+    And I wait for the menu to b displayed
+
+@wip @tablet
+Scenario: Visit the home page on a tablet
+  Given I am on the moduscreate home page
+  Then I must see the page title "Modus Create | HTML5 Application Development & Training"
+  Given I click the "Blog" span
+  Then I must see the page title "Blog | Modus Create"

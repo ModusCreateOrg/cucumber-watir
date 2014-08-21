@@ -1,15 +1,12 @@
 source 'http://rubygems.org'
 
-#ruby "2.0.0"
-#ruby "1.9.3"
-
-gem 'cucumber'
-gem 'watir-webdriver'
-gem 'nokogiri'
 gem 'bundler'
-gem 'headless'
 gem 'chronic'
+gem 'cucumber'
+gem 'headless'
+gem 'nokogiri'
+gem 'rake'
 gem 'selenium-webdriver'
 gem 'syntax'
+gem 'watir-webdriver'
 gem 'watir-webdriver-performance'
-gem 'rake'

@@ -1,13 +1,13 @@
 module Paths
 
   # Change this to switch environments
-  #TARGET = :Production
+  TARGET = :Production
   #TARGET = :Local
   #TARGET = :LocalSSL
-  TARGET = :Guest
+  #TARGET = :Guest
 
   BASE_URL = {
-    :Production  => "http://foobar.example.com/",
+    :Production  => "http://moduscreate.com/",
     :Local => "http://localhost:8080/",
     :LocalSSL => "https://localhost:8443/",
     :Guest => "http://localhost:80/",

@@ -9,7 +9,7 @@ The built in steps in `features/step-definitions/common_steps.rb` cover a variet
 
 This approach might not be as pure as some would advocate for BDD, but it strikes a good balance between being implementation specific and being fast to write and execute.
 
-Here's an example of a Cucumber scenario written with the common steps:
+Here is an example of a Cucumber scenario written with the common steps:
 
 ```
 @smoke @regression @desktop
@@ -36,7 +36,7 @@ License
 
 This test framework is licensed under the (MIT License)[http://opensource.org/licenses/MIT], a permissive free software license.
 
-See the file LICENSE for full copyright and license information.
+See the file LICENSE.md for full copyright and license information.
 
 
 Setup on Mac OS X
@@ -45,110 +45,137 @@ Setup on Mac OS X
 Tools Used:
 -----------
 
-1. Mac with Sudo Access
-2. Xcode with command line tools installed (command line tools can be installed from Xcode -> Preferences -> Downloads)
-3. RVM - Optional
-4. Ruby 2.0
+1. Mac with `sudo` Access
+2. Xcode with command line tools installed. The command line tools can be installed from Xcode -> Preferences -> Downloads
+3. RVM (optional)
+4. Ruby 2.1.1
 5. Watir-Webdriver
 6. webdriver-user-agent
 7. cucumber
-8. homebrew - Optional
+8. homebrew (optional)
 9. chromedriver
 
 
 Steps To Install:
 -----------------
 
-**Install Xcode and then install commandline tools.**
->*Command line tools can be installed from going to Xcode-> Preferences -> Downloads*
+### Mac Instructions
 
-**Install RVM**
+#### Install Xcode and then install command line tools.
 
-		\curl -L https://get.rvm.io | bash
+The command line tools can be installed in Xcode by going to Xcode-> Preferences -> Downloads
 
-**Install Ruby**
+#### Install RVM
 
-		rvm install ruby-2.0.0-p247
+		curl -L https://get.rvm.io | bash
 
-*To make this the default ruby on your Mac run the below command. However It is not necessary to make it the default ruby. The gemfile in the folder has the builin workflow to use Ruby 2.0 when you cd into the tests/web folder.*
+#### Install Ruby
 
-		rvm use ruby-2.0.0-p247 --default
+		rvm install ruby-2.1.1
 
-**Install Homebrew**
+To make this the default ruby on your Mac run the below command. However you do not need to make it the default ruby for the test scripts to run. The `.ruby-version` file in the folder has the builin workflow to use Ruby 2.1.1 when you cd into the tests/web folder.
+
+		rvm use ruby-2.1.1 --default
+
+#### Install Homebrew
 
 		ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-
 		brew doctor
 
->*if the above command fails, please follow the steps in the output to fix the errors.*
+If the above command fails, please follow the steps in the output to fix the errors. 
 
-**Install chromedriver**
+Installing Homebrew is optional. These directions use it to install chromedriver, but you could also use `npm` to install chromedriver or install it manually.  You can download chromedriver from http://chromedriver.storage.googleapis.com/index.html?path=2.4/ if you want to install it manually.
+
+#### Install chromedriver
+
+Install `chromedriver` using Homebrew or npm:
 
 		brew install chromedriver
+        # or if you prefer to install chromedriver through npm, do
+        # npm install chromedriver -g
 
->*Installing Homebrew is Optional. The only reason I use it is to install chromedriver*
->*You can download chromedriver from http://chromedriver.storage.googleapis.com/index.html?path=2.4/*
->*Unzip and move the driver to anyplace in your path like /usr/local/bin*
->*you can skip the brew install chromedriver below if you download it*
->*Advantage of installing via brew is that you can update it with a single command. (brew update && brew upgrade)*
+Unzip and move the driver to any place in your path such as `/usr/local/bin`.
 
-**Install the bundler gem**
+The advantage of installing chromedriver via brew or npm is that you can update it with a single command. (`brew update && brew upgrade``)
+
+#### Install the bundler gem
 
 		gem install bundler --no-ri --no-rdoc
 
-**Install necessary gems using bundler**
+#### Install necessary gems using bundler
 
-		cd test
 		bundle install
 
-**Running tests**
+### Getting Started (Windows)
 
-		cucumber features
+#### Download and Install Ruby
+Get Ruby 2.1.1 from http://rubyinstaller.org/downloads/
 
->*The above command runs all the tests inside the feature folder but that i snot what you want sometimes. To run single individual tests yo have to specify the line numbers as below*
+#### Download and install chromedriver
+
+Get Chromedriver from http://chromedriver.storage.googleapis.com/index.html
+
+Make sure the chromedriver is in your PATH enviroment variable.
+
+#### From here you can follow the same instructions as above.
+
+Running tests
+-------------
+
+You can run the tests directly with the cucumber command, or with a set of preset command line options using the `rake` command.
+
+### Run cucumber directly
+
+To run tests directly using Cucumber, simply issue the command:
+
+		cucumber
+
+The above command runs all the tests inside the feature folder but that is not what you want sometimes. To run single individual tests you have to specify the line numbers as below:.
 
 		cucumber features/main.feature:217
 
-This will run the Test scenario at line number 217
+This will run the test scenario at line number 217 in the file `features/main.feature`.
 
-**To see a list of Tasks**
+### Run cucumber using `rake`
+
+Rake uses tasks to collect a set of functions and commands. In this project, it is used to run cucumber with command line options suitable for testing out different groups of tagged features or 
+
+To see a list of tasks, run:
 
 		rake -T
 
-**To run the whole regression Suite**
+To run the whole regression suite, run:
 
-		rake regression:all
+		rake all
 
->*The HTML report will be saved to the results folder with screenshots of failures if any.*
+An HTML report will be saved to the `results` folder with screenshots of any failures. 
 
 
 Tips and Troubleshooting:
 --------------------------
 
-*Sencha Command integration*
+### Sencha Command integration
 
-*Please note that Sencha command needs ruby < 2.0 to be able to build apps successfully.*
+If you are using [Sencha Command](http://www.sencha.com/products/sencha-cmd), note that `sencha` may need ruby < 2.0 to be able to build apps successfully.
 
 If you have made Ruby 2.0 your default then run the below command before you use the sencha build script.
 
 		rvm use 1.9.3
 
->*You can simply create Alias in your bash profile to run tests. Instead of typing the whole cucumber command create this function in your bashrc or .profile file*
+### Bash alias for running tests
 
-		vi ~/.bash_profile
+You can simply create Alias in your bash profile to run tests. Instead of typing the whole cucumber command create this function in your `.bashrc` or `.profile` file:
 
-		c() { cucumber features/main.feature:"$@" ;}
+		echo 'c() { cucumber features/main.feature:"$@" ;}' >> ~/.bashrc
+        . ~/.bashrc
 
-
-**Save, Exit and source the file or simply restart your terminal**
-
-**Then you can run the test at line 217 by simply running the command below from the test folder**
+Then you can run the test at line 217 by simply running the command below from the test folder:
 
 		c 217
 
+### Libxml errors
 
-**If you run into libxml erorrs fix it as suggested in this post**
+If you run into libxml erorrs fix it as suggested in this post
 
 		https://gist.github.com/vparihar01/5856524
-
 
