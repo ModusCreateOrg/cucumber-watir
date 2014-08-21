@@ -48,6 +48,15 @@ Before ('@mobile') do
       end
 end
 
+Before ('@tablet') do
+      @browser = get_browser
+	if DRIVER == "chrome"
+        @browser.window.resize_to(1024,768)
+      else
+        @browser.window.maximize
+      end
+end
+
 After do
   @browser.close
 end
