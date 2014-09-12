@@ -25,7 +25,7 @@ Cucumber::Rake::Task.new(:jenkins_all, 'Run all tests for Jenkins CI') do |t|
   t.cucumber_opts = "features/*.feature
     --format html --out=results/jenkins-all-report-#{Time.now.strftime("%Y-%m-%d-%H-%M-%S")}.html
     --format pretty --no-source
-    --format rerun --out results/jenkins-all regression-rerun.txt
+    --format rerun --out results/jenkins-rerun.txt
     --tag @regression
     'HEADLESS=true'"
 end
