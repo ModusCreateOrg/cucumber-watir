@@ -1,7 +1,7 @@
 Cucumber-Watir Test Harness
 ===========================
 
-This is a test harness for automated functional testing of web applications, using the [Cucumber](http://cukes.info/) and [Watir](http://watir.com/) test frameworks. It can be used to support Behavioral Driven Design (BDD) or just automated functional testing of arbitrary web applications.
+This is a test harness for automated functional testing of web applications, using the [Cucumber](http://cukes.info/) and [Watir Webdriver](http://watirwebdriver.com/) test frameworks. It can be used to support Behavioral Driven Design (BDD) or just automated functional testing of arbitrary web applications.
 
 By using this collection of frameworks, you can quickly start a suite of functional tests for an application using a basic vocabulary inspired by tests that have been used successfully on many production projects.
 
@@ -82,7 +82,7 @@ To make this the default ruby on your Mac run the below command. However you do 
 		ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 		brew doctor
 
-If the above command fails, please follow the steps in the output to fix the errors. 
+If the above command fails, please follow the steps in the output to fix the errors.
 
 Installing Homebrew is optional. These directions use it to install chromedriver, but you could also use `npm` to install chromedriver or install it manually.  You can download chromedriver from http://chromedriver.storage.googleapis.com/index.html?path=2.4/ if you want to install it manually.
 
@@ -138,7 +138,7 @@ This will run the test scenario at line number 217 in the file `features/main.fe
 
 ### Run cucumber using `rake`
 
-Rake uses tasks to collect a set of functions and commands. In this project, it is used to run cucumber with command line options suitable for testing out different groups of tagged features or 
+Rake uses tasks to collect a set of functions and commands. In this project, it is used to run cucumber with command line options suitable for testing out different groups of tagged features or
 
 To see a list of tasks, run:
 
@@ -148,7 +148,7 @@ To run the whole regression suite, run:
 
 		rake all
 
-An HTML report will be saved to the `results` folder with screenshots of any failures. 
+An HTML report will be saved to the `results` folder with screenshots of any failures.
 
 
 Tips and Troubleshooting:
