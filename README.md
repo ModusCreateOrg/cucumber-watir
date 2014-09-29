@@ -69,6 +69,8 @@ The command line tools can be installed in Xcode by going to Xcode-> Preferences
 
 		curl -L https://get.rvm.io | bash
 
+Using a Ruby version manager will isolate the changes required for testing from the system Ruby. If you don't use rvm, you might consider [rbenv](https://github.com/sstephenson/rbenv) instead.
+
 #### Install Ruby
 
 		rvm install ruby-2.1.1
