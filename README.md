@@ -110,6 +110,10 @@ The advantage of installing chromedriver via brew or npm is that you can update 
 
 ### Getting Started (Windows)
 
+The following instructions show how to bootstrap a Windows ruby environment. However, you can shortcut this process by using the Windows Ruby environment found at:
+
+https://github.com/ModusCreateOrg/ruby4windows
+
 #### Download and Install Ruby
 Get Ruby 2.1.1 from http://rubyinstaller.org/downloads/
 
