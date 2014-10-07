@@ -125,6 +125,11 @@ Make sure the chromedriver is in your PATH enviroment variable.
 
 #### From here you can follow the same instructions as above.
 
+#### Alternatively you can simply clone the below Git repo and run your tests. The package contains all gems and utilities built-in to run the tests.
+
+`https://github.com/ModusCreateOrg/ruby4windows.git`
+
+
 Running tests
 -------------
 
