@@ -34,7 +34,7 @@ Scenario: User views profile page
 License
 =======
 
-This test framework is licensed under the (MIT License)[http://opensource.org/licenses/MIT], a permissive free software license.
+This test framework is licensed under the [MIT License](http://opensource.org/licenses/MIT), a permissive free software license.
 
 See the file LICENSE.md for full copyright and license information.
 
