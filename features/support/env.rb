@@ -1,8 +1,5 @@
 require 'watir-webdriver'
 require "watir-webdriver/extensions/alerts"
-require 'nokogiri'
-require 'date'
-require 'chronic'
 require 'selenium-webdriver'
 require 'minitest/unit'
 require 'watir-webdriver-performance'
