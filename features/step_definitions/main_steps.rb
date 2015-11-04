@@ -24,17 +24,20 @@ end
 
 Given(/^I click the "(.*?)" button$/) do |ele|
   case
-  when @browser.link(:id, ele).exists?
-       @browser.link(:id, ele).click
+  when @browser.button(:id, ele).exists?
+       @browser.button(:id, ele).click
 
-  when @browser.link(:text, ele).exists?
-       @browser.link(:text, ele).click
+  when @browser.button(:text, ele).exists?
+       @browser.button(:text, ele).click
 
-  when @browser.link(:class, ele).exists?
-       @browser.link(:class, ele).click
+  when @browser.button(:class, ele).exists?
+       @browser.button(:class, ele).click
 
-  when @browser.link(:name, ele).exists?
-       @browser.link(:name, ele).click
+  when @browser.button(:name, ele).exists?
+       @browser.button(:name, ele).click
+
+  when @browser.button(:value, ele).exists?
+       @browser.button(:value, ele).click
 
   else
     fail("Button => #{ele} NOT FOUND")
