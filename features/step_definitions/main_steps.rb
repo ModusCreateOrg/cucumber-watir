@@ -3,6 +3,7 @@ Given /^I am on (.+)$/ do |page_name|
     puts "URL = #{@browser.url}"
 end
 
+# Text Field
 Given(/^I fill in the text field "(.*?)" with "(.*?)"$/) do |ele, text|
  case
   when @browser.text_field(:id, ele).exists?
@@ -22,6 +23,7 @@ Given(/^I fill in the text field "(.*?)" with "(.*?)"$/) do |ele, text|
   end
 end
 
+# Button
 Given(/^I click the "(.*?)" button$/) do |ele|
   case
   when @browser.button(:id, ele).exists?
@@ -44,6 +46,7 @@ Given(/^I click the "(.*?)" button$/) do |ele|
   end
 end
 
+#Link
 Given(/^I click the "(.*?)" link$/) do |ele|
   case
   when @browser.link(:id, ele).exists?
@@ -63,6 +66,41 @@ Given(/^I click the "(.*?)" link$/) do |ele|
   end
 end
 
+#Radio Button
+Given(/^I click the "(.*?)" radio button/) do |ele|
+  case
+  when @browser.radio(:id, ele).exists?
+       @browser.radio(:id, ele).click
+
+  when @browser.radio(:name, ele).exists?
+       @browser.radio(:name, ele).click
+
+  when @browser.radio(:class, ele).exists?
+       @browser.radio(:class, ele).click
+
+  else
+    fail("Radio Button => #{ele} NOT FOUND")
+  end
+end
+
+#Checkbox
+Given(/^I click the "(.*?)" checkbox/) do |ele|
+  case
+  when @browser.checkbox(:id, ele).exists?
+       @browser.checkbox(:id, ele).click
+
+  when @browser.checkbox(:name, ele).exists?
+       @browser.checkbox(:name, ele).click
+
+  when @browser.checkbox(:class, ele).exists?
+       @browser.checkbox(:class, ele).click
+
+  else
+    fail("checkbox => #{ele} NOT FOUND")
+  end
+end
+
+#Span
 Given(/^I click the "(.*?)" span$/) do |ele|
   case
   when @browser.span(:id, ele).exists?
@@ -76,6 +114,23 @@ Given(/^I click the "(.*?)" span$/) do |ele|
 
   else
     fail("Span => #{ele} NOT FOUND")
+  end
+end
+
+#Div
+Given(/^I click the "(.*?)" div/) do |ele|
+  case
+  when @browser.div(:id, ele).exists?
+       @browser.div(:id, ele).click
+
+  when @browser.div(:text, ele).exists?
+       @browser.div(:text, ele).click
+
+  when @browser.div(:class, ele).exists?
+       @browser.div(:class, ele).click
+
+  else
+    fail("Div => #{ele} NOT FOUND")
   end
 end
 
