@@ -1,4 +1,4 @@
-module Paths
+module Urls
 
   # Change this to switch environments
   TARGET = :Production
@@ -30,4 +30,4 @@ module Paths
 
 end
 
-World(Paths)
+World(Urls)
