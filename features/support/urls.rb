@@ -22,9 +22,11 @@ module Urls
     case page_name
     when /the desktop home page/i
        base_url
+    when /the duckduckgo home page/i
+       base_url="http://duckduckgo.com"
     else
-      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      raise "Can't find mapping from \"#{page_name}\" to a url.\n" +
+        "Please add a mapping in #{__FILE__}"
      end
   end
 
