@@ -4,7 +4,6 @@ require 'selenium-webdriver'
 require 'minitest/unit'
 require 'watir-webdriver-performance'
 
-
 if ENV['HEADLESS']
   require 'headless'
   headless = Headless.new

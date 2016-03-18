@@ -50,7 +50,7 @@ Before ('@tablet') do
   end
 end
 
-After ('~@appium')do
+After do
   @browser.close
 end
 
