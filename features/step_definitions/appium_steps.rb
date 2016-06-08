@@ -10,3 +10,14 @@ end
 Then(/^the result should be displayed as "(.*?)"$/) do |expected|
   assert_includes(first_text.value,expected)
 end
+
+### ASSERTIONS ###
+Given /^I must see text "([^"]*)" displayed$/ do |text|
+  wait { text_exact text }
+end
+
+### ALERTS ###
+Then(/^I should see the error message and accept it$/) do
+  def alert_accept
+    end
+end
