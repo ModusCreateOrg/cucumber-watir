@@ -24,7 +24,7 @@ Then(/^I should see the error message and accept it$/) do
 end
 
 
-### Scroll###
+### SCROLL###
 Given(/^I scroll down to YOUR_ELEMENT_NAME/) do
 element = find_element :name, "YOUR_ELEMENT_NAME"
 execute_script 'mobile: scrollTo', :element => element.ref
