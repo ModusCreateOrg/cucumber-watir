@@ -16,8 +16,16 @@ Given /^I must see text "([^"]*)" displayed$/ do |text|
   wait { text_exact text }
 end
 
+
 ### ALERTS ###
 Then(/^I should see the error message and accept it$/) do
   def alert_accept
     end
+end
+
+
+### Scroll###
+Given(/^I scroll down to YOUR_ELEMENT_NAME/) do
+element = find_element :name, "YOUR_ELEMENT_NAME"
+execute_script 'mobile: scrollTo', :element => element.ref
 end
