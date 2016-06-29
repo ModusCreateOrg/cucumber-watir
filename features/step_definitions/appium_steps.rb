@@ -7,6 +7,11 @@ Given(/^I tap "([^"]*)"$/) do |arg1|
   find_element(:name,arg1).click
 end
 
+Given(/^I tap "([^"]*)" button$/) do |arg1|
+  find_element(:xpath, arg1).click
+  sleep(3)
+end
+
 Then(/^the result should be displayed as "(.*?)"$/) do |expected|
   assert_includes(first_text.value,expected)
 end
@@ -29,3 +34,9 @@ Given(/^I scroll down to YOUR_ELEMENT_NAME/) do
 element = find_element :name, "YOUR_ELEMENT_NAME"
 execute_script 'mobile: scrollTo', :element => element.ref
 end
+
+
+### KEYBOARD ###
+Given(/^I tap "([^"]*)" key$/) do |arg1|
+  find_element(:name, arg1).click
+  end
