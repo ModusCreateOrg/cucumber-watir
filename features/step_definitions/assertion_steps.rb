@@ -1,3 +1,5 @@
+### ASSERTIONS FOR THE WEB APP ###
+
 Then(/^I must see the text "(.*?)" displayed$/) do |text|
   assert_equal(true,@browser.text.include?(text))
 end
