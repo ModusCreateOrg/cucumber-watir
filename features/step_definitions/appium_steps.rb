@@ -1,3 +1,7 @@
+###                      ###
+### iOS MOBILE APP STEPS ###
+###                      ###
+
 Given(/^I type "([^"]*)" into the search text field$/) do |arg1|
   find_element(:xpath, "//UIAApplication[1]/UIAWindow[1]/UIATextField[1]").send_keys arg1
   find_element(:name, "Return").click
