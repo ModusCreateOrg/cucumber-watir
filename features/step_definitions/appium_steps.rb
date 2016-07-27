@@ -21,6 +21,11 @@ Given /^I must see text "([^"]*)" displayed$/ do |text|
   wait { text_exact text }
 end
 
+Given /^I do NOT see text "([^"]*)" displayed$/ do |text|
+  wait_true { ignore { text_exact(text) }.nil? }
+  true
+end
+
 
 ### ALERTS ###
 Then(/^I should see the error message and accept it$/) do
@@ -32,6 +37,11 @@ end
 ### SCROLL ###
 Given(/^I scroll down to YOUR_ELEMENT_NAME/) do
 element = find_element :name, "YOUR_ELEMENT_NAME"
+execute_script 'mobile: scrollTo', :element => element.ref
+end
+
+Given(/^I scroll down to YOUR_ELEMENT_NAME/) do
+element = find_element :xpath, "//UIAStaticText[@name='YOUR_ELEMENT_NAME']"
 execute_script 'mobile: scrollTo', :element => element.ref
 end
 
