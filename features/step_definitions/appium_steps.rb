@@ -7,10 +7,17 @@ Given(/^I type "([^"]*)" into the search text field$/) do |arg1|
   find_element(:name, "Return").click
 end
 
+# Tap on element by its name tag
 Given(/^I tap "([^"]*)"$/) do |arg1|
   find_element(:name,arg1).click
 end
 
+# Tap on element by simply writing elements text
+Given(/^I tap on "([^"]*)"/) do |arg1|
+  text(arg1).click
+end
+
+# Tap on element by wiriting its Xpath
 Given(/^I tap "([^"]*)" button$/) do |arg1|
   find_element(:xpath, arg1).click
   sleep(3)
