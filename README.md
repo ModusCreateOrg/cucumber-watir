@@ -48,7 +48,7 @@ Tools Used:
 1. Mac with `sudo` Access
 2. Xcode with command line tools installed. The command line tools can be installed from Xcode -> Preferences -> Downloads
 3. RVM (optional)
-4. Ruby 2.1.1
+4. Ruby 2.5.0
 5. Watir-Webdriver
 6. webdriver-user-agent
 7. cucumber
@@ -73,11 +73,11 @@ Using a Ruby version manager will isolate the changes required for testing from 
 
 #### Install Ruby
 
-		rvm install ruby-2.1.1
+		rvm install ruby-2.5.0
 
-To make this the default ruby on your Mac run the below command. However you do not need to make it the default ruby for the test scripts to run. The `.ruby-version` file in the folder has the builin workflow to use Ruby 2.1.1 when you cd into the tests/web folder.
+To make this the default ruby on your Mac run the below command. However you do not need to make it the default ruby for the test scripts to run. The `.ruby-version` file in the folder has the builin workflow to use Ruby 2.5.0 when you cd into the tests/web folder.
 
-		rvm use ruby-2.1.1 --default
+		rvm use ruby-2.5.0 --default
 
 #### Install Homebrew
 
@@ -86,7 +86,7 @@ To make this the default ruby on your Mac run the below command. However you do 
 
 If the above command fails, please follow the steps in the output to fix the errors.
 
-Installing Homebrew is optional. These directions use it to install chromedriver, but you could also use `npm` to install chromedriver or install it manually.  You can download chromedriver from http://chromedriver.storage.googleapis.com/index.html?path=2.4/ if you want to install it manually.
+Installing Homebrew is optional. These directions use it to install chromedriver, but you could also use `npm` to install chromedriver or install it manually.  You can download chromedriver from https://chromedriver.storage.googleapis.com/index.html if you want to install it manually.
 
 #### Install chromedriver
 
@@ -110,12 +110,10 @@ The advantage of installing chromedriver via brew or npm is that you can update 
 
 ### Getting Started (Windows)
 
-The following instructions show how to bootstrap a Windows ruby environment. However, you can shortcut this process by using the Windows Ruby environment found at:
-
-https://github.com/ModusCreateOrg/ruby4windows
+The following instructions show how to bootstrap a Windows ruby environment.
 
 #### Download and Install Ruby
-Get Ruby 2.1.1 from http://rubyinstaller.org/downloads/
+Get Ruby 2.5.0-1 (or newer) from http://rubyinstaller.org/downloads/
 
 #### Download and install chromedriver
 
