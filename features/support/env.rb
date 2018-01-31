@@ -1,6 +1,7 @@
 require 'watir-webdriver'
 require "watir-webdriver/extensions/alerts"
 require 'selenium-webdriver'
+require 'minitest/autorun'
 require 'minitest/unit'
 require 'watir-webdriver-performance'
 

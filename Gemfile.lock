@@ -34,7 +34,7 @@ GEM
     page_navigation (0.9)
       data_magic (>= 0.14)
     rake (10.3.2)
-    rubyzip (1.1.6)
+    rubyzip (1.2.1)
     selenium-webdriver (2.42.0)
       childprocess (>= 0.5.0)
       multi_json (~> 1.0)
@@ -44,7 +44,6 @@ GEM
     watir-webdriver (0.6.10)
       selenium-webdriver (>= 2.18.0)
     watir-webdriver-performance (0.2.2)
-      watir-webdriver
       watir-webdriver
     websocket (1.0.7)
     yml_reader (0.5)
@@ -64,3 +63,6 @@ DEPENDENCIES
   syntax
   watir-webdriver
   watir-webdriver-performance
+
+BUNDLED WITH
+   1.10.6
