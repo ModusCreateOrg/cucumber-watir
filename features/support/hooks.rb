@@ -20,7 +20,7 @@ TIMEOUT=180
 # http://stackoverflow.com/questions/18659847/reload-page-until-it-has-some-element-using-ruby-selenium-webdriver/18660166#18660166
 def get_browser
   client = Selenium::WebDriver::Remote::Http::Default.new
-  client.timeout = TIMEOUT # seconds – default is 30
+  client.open_timeout = TIMEOUT # seconds – default is 30
   browser = Watir::Browser.new DRIVER.to_sym, :http_client => client
   return browser
 end
