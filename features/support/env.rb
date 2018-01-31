@@ -1,8 +1,7 @@
-require 'watir-webdriver'
-require "watir-webdriver/extensions/alerts"
+require 'watir'
+require 'watir-webdriver-performance'
 require 'selenium-webdriver'
 require 'minitest/test'
-require 'watir-webdriver-performance'
 
 if ENV['HEADLESS']
   require 'headless'
