@@ -1,5 +1,4 @@
 require 'watir'
-require 'watir-webdriver-performance'
 require 'selenium-webdriver'
 require 'minitest/test'
 

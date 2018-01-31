@@ -54,10 +54,6 @@ GEM
     syntax (1.2.2)
     watir (6.10.3)
       selenium-webdriver (~> 3.4, >= 3.4.1)
-    watir-webdriver (0.9.9)
-      selenium-webdriver (>= 2.46.2)
-    watir-webdriver-performance (0.2.4)
-      watir-webdriver
     yml_reader (0.7)
 
 PLATFORMS
@@ -75,7 +71,6 @@ DEPENDENCIES
   selenium-webdriver
   syntax
   watir (~> 6.0)
-  watir-webdriver-performance
 
 BUNDLED WITH
    1.16.1
