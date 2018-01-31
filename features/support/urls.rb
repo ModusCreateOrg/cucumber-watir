@@ -7,8 +7,8 @@ module Urls
   #TARGET = :Guest
 
   BASE_URL = {
-    :Production  => "http://moduscreate.com/",
-    :Local => "http://localhost:8080/",
+    :Production  => "http://labs.moduscreate.com/",
+    :Local => "http://localhost:4000/",
     :LocalSSL => "https://localhost:8443/",
     :Guest => "http://localhost:80/",
   }
@@ -27,7 +27,7 @@ module Urls
     else
       raise "Can't find mapping from \"#{page_name}\" to a url.\n" +
         "Please add a mapping in #{__FILE__}"
-     end
+    end
   end
 
 end
