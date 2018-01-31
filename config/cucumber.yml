@@ -1,1 +1,1 @@
-default: features --tag ~@wip --tag ~@manual
+default: features --tag "not @wip" --tag "not @manual"
