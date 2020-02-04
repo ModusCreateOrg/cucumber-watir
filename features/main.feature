@@ -6,20 +6,23 @@ Feature: Main tests
 @smoke @regression @desktop
 Scenario: Visit the home page
   Given I am on the desktop home page
-  Then I must see the page title "Modus Create Labs"
+  Then I must see the page title "Modus Labs by Modus Create"
+  Then I click the "OK" button for accept cookies if it is displayed
   When I click the "Cucumber Watir" link
   Then I wait for the "test harness" text to be displayed
 
 @regression @mobile
 Scenario: Visit the home page on a mobile device
   Given I am on the desktop home page
-  Then I must see the page title "Modus Create Labs"
+  Then I must see the page title "Modus Labs by Modus Create"
+  Then I click the "OK" button for accept cookies if it is displayed
   When I click the "Cucumber Watir" link
   Then I wait for the "test harness" text to be displayed
 
 @wip @tablet
 Scenario: Visit the home page on a tablet
   Given I am on the desktop home page
-  Then I must see the page title "Modus Create Labs"
+  Then I must see the page title "Modus Labs by Modus Create"
+  Then I click the "OK" button for accept cookies if it is displayed
   When I click the "Cucumber Watir" link
   Then I wait for the "test harness" text to be displayed
