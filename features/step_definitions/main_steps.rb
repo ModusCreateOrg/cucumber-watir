@@ -149,3 +149,14 @@ Given(/^I click the "(.*?)" icon$/) do |ele|
     fail("Icon => #{ele} NOT FOUND")
   end
 end
+
+#handle the cookie alert by pressing ok if displayed
+Then(/^I click the "(.*?)" button for accept cookies if it is displayed$/) do |ele|
+  case
+  when
+  @browser.a(:text, ele). exists?
+    @browser.a(:text, ele).click
+  else
+    fail("Icon => #{ele} NOT FOUND")
+  end
+end
